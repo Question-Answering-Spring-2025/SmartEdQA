@@ -6,5 +6,7 @@ steps.txt
 .venv_mcq
 mcq_service/venv_mcq
 mcq_service/__pycache__/
+node_modules
+package-lock.json
 
 
