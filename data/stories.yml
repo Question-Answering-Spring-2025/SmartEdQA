@@ -1,0 +1,19 @@
+version: "3.1"
+
+stories:
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+
+# - story: handle follow-up JSON question
+#   steps:
+#   - intent: affirm_another_question
+#   - action: utter_ask_mcq_question
+#   - intent: ask_mcq
+#     entities:
+#       - question: "Pollination is how flowers reproduce..."
+#       - options: "A. Wind, B. Insects, C. Water, D. All of the above"
+#   - action: action_run_mcq
+#   - action: utter_ask_another_question

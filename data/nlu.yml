@@ -1,0 +1,63 @@
+version: "3.1"
+
+nlu:
+- intent: ask_mcq
+  examples: |
+    - ask me a question
+    - give me a question
+    - I want to answer a question
+    - I want to ask a mcq
+    - i wanna ask a multiple choice question
+    
+- intent: provide_mcq
+  examples: |
+    - {"question": "What is the role of nitrogen-fixing bacteria in the nitrogen cycle?", "options": "A. They convert nitrogen gas into nitrates, B. They break down dead organisms into ammonia, C. They convert nitrates into nitrogen gas, D. They release nitrogen into the atmosphere"}
+    - {"question" : "Pollination is how flowers reproduce—what things help make it happen?", "options": "A. Wind, B. Insects, C. Water, D. All of the above" }
+    - {"question": "What is...", "options": "A... B..."}
+    - {"question" : "Another question?", "options": "A... B..." }
+    - {"question":"Question here","options":"A... B..."}
+
+- intent: affirm_another_question
+  examples: |
+    - yes, i have another question
+    - yes, i ahve another question
+    - yeah, another one
+    - yes i do
+    - sure, i want another question
+    - yup, another question
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?

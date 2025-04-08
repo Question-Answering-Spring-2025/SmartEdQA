@@ -1,0 +1,10 @@
+.env
+.venv
+__pycache__/
+steps.txt
+.rasa
+.venv_mcq
+mcq_service/venv_mcq
+mcq_service/__pycache__/
+
+

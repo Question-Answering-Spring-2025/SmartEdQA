@@ -1,0 +1,46 @@
+version: "3.1"
+
+intents:
+  - ask_mcq
+  - provide_mcq
+  - affirm_another_question
+  - greet
+  - goodbye
+  - bot_challenge
+
+slots:
+  mcq_question:
+    type: text
+    influence_conversation: true  # Allow the slot to influence the conversation
+    mappings:
+      - type: from_text
+
+responses:
+  utter_ask_mcq_question:
+    - text: "Absolutely.! - what's your question?"
+    - text: "Sure! What question do you have in mind?"
+    - text: "Of course! Please provide me with the question."
+    - text: "Sure! What question do you have in mind?"
+    - text: "Sure! Please provide me with the question."
+    - text: "Cool.! What are the questions we are looking at today?"
+  utter_ask_another_question:
+    - text: "Do you have another question, or is there anything else I can help with?"
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_goodbye:
+  - text: "Bye! (Type '/stop' to exit)"
+  - text: "Have lovely times! (Type '/stop' to exit)"
+  - text: "See you fellow humanspersons! (Type '/stop' to exit)"
+  - text: "Kwaheri! (Type '/stop' to exit)"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+actions:
+  - action_run_mcq
+  - action_end_conversation
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
