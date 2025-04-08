@@ -25,6 +25,10 @@ responses:
     - text: "Cool.! What are the questions we are looking at today?"
   utter_ask_another_question:
     - text: "Do you have another question, or is there anything else I can help with?"
+    - text: "Do you have another question?"
+    - text: "Have another question? Great, hit me!"
+    - text: "Am ready for another question if you are!"
+    - text: "Would you like to ask another question? Am here."
   utter_greet:
   - text: "Hey! How are you?"
 

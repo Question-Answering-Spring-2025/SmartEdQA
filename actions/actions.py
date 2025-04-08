@@ -132,7 +132,8 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, Restarted, SlotSet, FollowupAction, ConversationPaused
 from typing import List, Dict, Any  # Import List for type hints in Python 3.8
 
-MCQ_URL = "http://localhost:8000/mcq"
+# MCQ_URL = "http://localhost:8000/mcq"
+MCQ_URL = "http://localhost:8001/mcq"
 
 class ActionRunMCQ(Action):
     def name(self) -> str:
