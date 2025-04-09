@@ -26,7 +26,16 @@ nlu:
     - sure, i want another question
     - yup, another question
     - yea, i have another one
-
+- intent: affirm_another_shortqa_question 
+  examples: |
+    - yes, i have another short answer question
+    - yes, i have another short qa question
+    - yeah, another short answer
+    - yes i do, a short answer
+    - yeah
+    - yup
+    - sure, i have another short answer question
+    - yup, another short answer question
 - intent: ask_short_qa
   examples: |
     - i want to answer a short question
@@ -41,7 +50,16 @@ nlu:
     - {"question": "What’s the job of white blood cells?"}
     - {"question": "What’s the job of red blood cells?"}
     - {"question": "What’s anemia, as a general condition affecting the blood?"}
-  
+
+- intent: mention_long_question
+  examples: |
+    - I have a long question
+    - I ahve long question
+    - I have a very long question
+    - I’ve got a long question for you
+    - My question is long
+    - I have a long question to ask
+    
 - intent: greet
   examples: |
     - hey

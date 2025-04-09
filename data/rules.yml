@@ -26,7 +26,7 @@ rules:
     - slot_was_set:
         - mcq_question: null
 
-- rule: Affirm Another question
+- rule: Affirm another MCQ question
   steps:
   - intent: affirm_another_question
   - action: utter_ask_mcq_question
@@ -36,6 +36,16 @@ rules:
   - action: utter_ask_another_mcq_question
   - slot_was_set:
       - mcq_question: null  # Clear the slot after processing
+
+- rule: Affirm Another ShortQA question 
+  steps:
+    - intent: affirm_another_shortqa_question
+    - action: utter_ask_short_qa_question
+    - action: action_listen
+    - action: action_run_short_qa
+    - action: utter_ask_another_shortqa_question
+    - slot_was_set:
+        - short_qa_question: null
 
 - rule: Short-answer question flow
   steps:
@@ -55,6 +65,11 @@ rules:
     - slot_was_set:
         - short_qa_question: null
 
+- rule: Respond to long question mention
+  steps:
+    - intent: mention_long_question
+    - action: utter_only_mcq_short_answer
+    
 - rule: Say goodbye anytime the user says goodbye
   steps:
     - intent: goodbye

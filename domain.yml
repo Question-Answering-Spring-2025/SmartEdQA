@@ -6,6 +6,8 @@ intents:
   - affirm_another_question
   - ask_short_qa
   - provide_short_qa
+  - affirm_another_shortqa_question
+  - mention_long_question
   - greet
   - goodbye
   - bot_challenge
@@ -46,6 +48,10 @@ responses:
     - text: "Have another short-answer question? Great, hit me!"
     - text: "Am ready for another short-answer question if you are!"
     - text: "Would you like to ask another short-answer question? Am here."
+  utter_only_mcq_short_answer:
+    - text: "I’m sorry, I only handle multiple-choice questions (MCQs) and short-answer questions. Would you like one of those instead?"
+    - text: "I’m sorry, I only handle multiple-choice questions (MCQs) and short-answer questions. Please pick either."
+    - text: "Apologies, I only handles MCQ and Short Answer Questions. Would you like to ask one of those instead?"
   utter_greet:
   - text: "Hey! How are you?"
 
@@ -59,7 +65,7 @@ responses:
   utter_iamabot:
   - text: "I am a bot, built by delphine nyabke, and powered by Rasa."
   - text: "I am a bot, built by delphine nyabke, and powered by Rasa. I am here to assist you with your questions."
-  - text: "Of course I am.! I was built by delphine nyaboke, to assist with question answering."
+  - text: "Of course not, I am a bot! I was built by delphine nyaboke, to assist with question answering."
   - text: "Yes, I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your questions."
   - text: "I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your questions."
 
