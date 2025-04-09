@@ -3,8 +3,8 @@ version: "3.1"
 nlu:
 - intent: ask_mcq
   examples: |
-    - ask me a question
-    - give me a question
+    - can i ask a question
+    - i have a question to ask
     - I want to answer a question
     - I want to ask a mcq
     - i wanna ask a multiple choice question
@@ -25,7 +25,23 @@ nlu:
     - yes i do
     - sure, i want another question
     - yup, another question
+    - yea, i have another one
 
+- intent: ask_short_qa
+  examples: |
+    - i want to answer a short question
+    - i want to ask a short question
+    - i have a short qa question
+
+- intent: provide_short_qa
+  examples: | 
+    - {"question": "Heart valves keep things flowing—what’s their purpose in all this?"}
+    - {"question": "Blood vessels seem important—what are the three types we have?"}
+    - {"question": What’s the septum’s basic purpose in how the heart is structured?}
+    - {"question": "What’s the job of white blood cells?"}
+    - {"question": "What’s the job of red blood cells?"}
+    - {"question": "What’s anemia, as a general condition affecting the blood?"}
+  
 - intent: greet
   examples: |
     - hey

@@ -50,9 +50,6 @@ chroma_collection = chroma_client.get_or_create_collection(COLLECTION_NAME)
 vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-chroma_collection = chroma_client.get_or_create_collection(COLLECTION_NAME)
-vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
-storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
 def get_or_build_index() -> VectorStoreIndex:
     existing_doc_count = len(chroma_collection.get()["ids"])
