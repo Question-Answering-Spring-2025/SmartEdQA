@@ -8,5 +8,7 @@ mcq_service/venv_mcq
 mcq_service/__pycache__/
 node_modules
 package-lock.json
-
+short_qa/venv_shortqa
+short_qa/__pycache__/
+chroma_db
 
