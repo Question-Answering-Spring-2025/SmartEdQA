@@ -4,6 +4,10 @@ intents:
   - ask_mcq
   - provide_mcq
   - affirm_another_question
+  - ask_short_qa
+  - provide_short_qa
+  - affirm_another_shortqa_question
+  - mention_long_question
   - greet
   - goodbye
   - bot_challenge
@@ -12,6 +16,11 @@ slots:
   mcq_question:
     type: text
     influence_conversation: true  # Allow the slot to influence the conversation
+    mappings:
+      - type: from_text
+  short_qa_question: 
+    type: text
+    influence_conversation: true
     mappings:
       - type: from_text
 
@@ -23,12 +32,26 @@ responses:
     - text: "Sure! What question do you have in mind?"
     - text: "Sure! Please provide me with the question."
     - text: "Cool.! What are the questions we are looking at today?"
-  utter_ask_another_question:
-    - text: "Do you have another question, or is there anything else I can help with?"
-    - text: "Do you have another question?"
-    - text: "Have another question? Great, hit me!"
-    - text: "Am ready for another question if you are!"
-    - text: "Would you like to ask another question? Am here."
+  utter_ask_short_qa_question:
+    - text: "Please provide the specific short answer question you would like assistance with."
+    - text: "What short-answer question do you have for me?"
+    - text: "Go ahead and share your short-answer question!"
+  utter_ask_another_mcq_question:
+    - text: "Do you have another MCQ question, or is there anything else I can help with?"
+    - text: "Do you have another MCQ question?"
+    - text: "Have another MCQ question? Great, hit me!"
+    - text: "Am ready for another MCQ question if you are!"
+    - text: "Would you like to ask another MCQ question? Am here."
+  utter_ask_another_shortqa_question:
+    - text: "Do you have another short-answer question, or is there anything else I can help with?"
+    - text: "Do you have another short-answer question?"
+    - text: "Have another short-answer question? Great, hit me!"
+    - text: "Am ready for another short-answer question if you are!"
+    - text: "Would you like to ask another short-answer question? Am here."
+  utter_only_mcq_short_answer:
+    - text: "I’m sorry, I only handle multiple-choice questions (MCQs) and short-answer questions. Would you like one of those instead?"
+    - text: "I’m sorry, I only handle multiple-choice questions (MCQs) and short-answer questions. Please pick either."
+    - text: "Apologies, I only handles MCQ and Short Answer Questions. Would you like to ask one of those instead?"
   utter_greet:
   - text: "Hey! How are you?"
 
@@ -37,12 +60,18 @@ responses:
   - text: "Have lovely times! (Type '/stop' to exit)"
   - text: "See you fellow humanspersons! (Type '/stop' to exit)"
   - text: "Kwaheri! (Type '/stop' to exit)"
+  - text: "Muraho! (Type '/stop' to exit)"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "I am a bot, built by delphine nyabke, and powered by Rasa."
+  - text: "I am a bot, built by delphine nyabke, and powered by Rasa. I am here to assist you with your questions."
+  - text: "Of course not, I am a bot! I was built by delphine nyaboke, to assist with question answering."
+  - text: "Yes, I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your questions."
+  - text: "I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your questions."
 
 actions:
   - action_run_mcq
+  - action_run_short_qa
   - action_end_conversation
 
 session_config:

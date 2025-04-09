@@ -1,34 +1,3 @@
-# version: "3.1"
-
-# rules:
-
-# - rule: MCQ question flow
-#   steps:
-#     - intent: ask_mcq
-#     - action: utter_ask_mcq_question
-#     - slot_was_set:
-#         - mcq_question: null     # Ensure the slot starts empty
-#     - action: action_listen       # Wait for user to provide the MCQ question
-#     - action: action_run_mcq       # Run the custom action for the MCQ
-#     - action: utter_ask_another_question  # Prompt for another question
-#     - slot_was_set:
-#         - mcq_question: null     # Clear the slot after the answer
-
-# - rule: Say goodbye anytime the user says goodbye
-#   steps:
-#     - intent: goodbye
-#     - action: utter_goodbye
-#     - slot_was_set:
-#         - mcq_question: null     # Explicitly clear the slot
-
-# - rule: Say 'I am a bot' anytime the user challenges
-#   steps:
-#     - intent: bot_challenge
-#     - action: utter_iamabot
-#     - slot_was_set:
-#         - mcq_question: null     # Explicitly clear the slot
-
-
 version: "3.1"
 
 rules:
@@ -41,7 +10,7 @@ rules:
     - action: utter_ask_mcq_question  # Skip asking for the question if it’s already provided
     - action: action_listen
     - action: action_run_mcq  # Run the custom action for the MCQ
-    - action: utter_ask_another_question
+    - action: utter_ask_another_mcq_question
     - slot_was_set:
         - mcq_question: null  # Clear the slot after processing
 
@@ -53,28 +22,62 @@ rules:
     # - intent: ask_mcq
     - intent: provide_mcq
     - action: action_run_mcq  # Process the question immediately
-    - action: utter_ask_another_question
+    - action: utter_ask_another_mcq_question
     - slot_was_set:
         - mcq_question: null
 
-- rule: Affirm Another question
+- rule: Affirm another MCQ question
   steps:
   - intent: affirm_another_question
   - action: utter_ask_mcq_question
   - action: action_listen
   # - action: ask_mcq
   - action: action_run_mcq
-  - action: utter_ask_another_question
+  - action: utter_ask_another_mcq_question
   - slot_was_set:
       - mcq_question: null  # Clear the slot after processing
 
+- rule: Affirm Another ShortQA question 
+  steps:
+    - intent: affirm_another_shortqa_question
+    - action: utter_ask_short_qa_question
+    - action: action_listen
+    - action: action_run_short_qa
+    - action: utter_ask_another_shortqa_question
+    - slot_was_set:
+        - short_qa_question: null
+
+- rule: Short-answer question flow
+  steps:
+    - intent: ask_short_qa
+    - action: utter_ask_short_qa_question
+    - action: action_listen
+    - action: action_run_short_qa
+    - action: utter_ask_another_shortqa_question
+    - slot_was_set:
+        - short_qa_question: null
+
+- rule: Short-answer question provided directly
+  steps:
+    - intent: provide_short_qa
+    - action: action_run_short_qa
+    - action: utter_ask_another_shortqa_question
+    - slot_was_set:
+        - short_qa_question: null
+
+- rule: Respond to long question mention
+  steps:
+    - intent: mention_long_question
+    - action: utter_only_mcq_short_answer
+    
 - rule: Say goodbye anytime the user says goodbye
   steps:
     - intent: goodbye
     - action: utter_goodbye
     - action: action_end_conversation
-    - slot_was_set:
+    - slot_was_set: # clear slots
         - mcq_question: null
+        - short_qa_question: null
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
@@ -82,3 +85,4 @@ rules:
     - action: utter_iamabot
     - slot_was_set:
         - mcq_question: null
+        - short_qa_question: null

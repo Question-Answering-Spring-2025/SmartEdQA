@@ -3,27 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ Chatbot</title>
+    <title>MCQ & Short Answer Chatbot</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Ensure consistent sizing across elements */
+        }
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
             background-color: #f0f0f0;
         }
         #chat-container {
-            max-width: 600px;
-            margin: 0 auto;
+            width: 95vw; /* 95% of viewport width */
+            height: 95vh; /* 95% of viewport height */
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: white;
             padding: 10px;
+            display: flex;
+            flex-direction: column; /* Stack messages and input vertically */
         }
         #chat-messages {
-            height: 400px;
-            overflow-y: auto;
+            flex: 1; /* Take up remaining space */
+            overflow-y: auto; /* Enable vertical scrolling */
             border-bottom: 1px solid #ccc;
             padding: 10px;
+            /* Ensure smooth scrolling behavior */
+            scroll-behavior: smooth;
         }
         #chat-input {
             width: 100%;
@@ -31,17 +43,42 @@
             border: none;
             outline: none;
             font-size: 16px;
+            box-sizing: border-box; /* Ensure padding doesn’t affect width */
         }
         .message {
             margin: 5px 0;
+            border-radius: 5px;
+            max-width: 80%; /* Prevent messages from stretching too wide */
+            line-height: 1.4; /* Improve readability */
+            display: block; /* Ensure each message takes its own line */
+        }
+        .message-content {
+            display: inline-block; /* Make the background only as wide as the text */
+            padding: 8px 12px; /* Apply padding to the text content */
+            overflow-wrap: break-word; /* Ensure long text wraps */
+            border-radius: 5px; /* Apply border-radius to the background */
         }
         .user {
             text-align: right;
             color: blue;
+            margin-left: auto; /* Align user messages to the right */
         }
         .bot {
             text-align: left;
             color: green;
+            margin-right: auto; /* Align bot messages to the left */
+        }
+        .bot .message-content, .user .message-content {
+            background-color: #e0e0e0; /* Light background for both user and bot messages */
+        }
+        .command {
+            text-align: center;
+            color: purple;
+            font-style: italic;
+            max-width: 100%; /* Commands can take full width */
+        }
+        .command .message-content {
+            background-color: #e0e0e0; /* Ensure commands also have a background */
         }
     </style>
 </head>
@@ -56,8 +93,17 @@
 
         function addMessage(text, sender) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = text;
+            // Check if the message is a command (e.g., /stop)
+            if (text.startsWith('/')) {
+                messageDiv.className = 'message command';
+            } else {
+                messageDiv.className = `message ${sender}`;
+            }
+            // Create a span to wrap the text content
+            const contentSpan = document.createElement('span');
+            contentSpan.className = 'message-content';
+            contentSpan.textContent = text;
+            messageDiv.appendChild(contentSpan);
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -95,6 +141,10 @@
                 addMessage('Sorry, I couldn’t connect to the bot.', 'bot');
             }
         }
+        // Ensure the chat starts scrolled to the bottom (useful if there are initial messages)
+        window.onload = () => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
     </script>
 </body>
 </html>
