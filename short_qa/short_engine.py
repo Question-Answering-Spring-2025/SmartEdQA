@@ -37,12 +37,7 @@ PERSIST_DIR = "./chroma_db"
 COLLECTION_NAME = "Biology_S3_SB"
 PDF_FILE_PATH = "../books/Biology_S3_SB_compressed.pdf"
 
-# chroma_client = chromadb.Client(
-#     ChromaSettings(
-#         chroma_db_impl="duckdb+parquet",
-#         persist_directory=PERSIST_DIR
-#     )
-# )
+
 
 # Use PersistentClient instead of Client with ChromaSettings
 chroma_client = chromadb.PersistentClient(path=PERSIST_DIR)
