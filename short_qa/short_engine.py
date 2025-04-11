@@ -22,7 +22,7 @@ warnings.filterwarnings("ignore")
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# 1) Configure LlamaIndex
+# Configure LlamaIndex
 # embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-base-en-v1.5")
 embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 
@@ -32,17 +32,12 @@ Settings.node_parser = SentenceSplitter(chunk_size=512, chunk_overlap=20)
 Settings.num_output = 512
 Settings.context_window = 3900
 
-# 2) Persistent Chroma configuration
+# Persistent Chroma configuration
 PERSIST_DIR = "./chroma_db"
 COLLECTION_NAME = "Biology_S3_SB"
 PDF_FILE_PATH = "../books/Biology_S3_SB_compressed.pdf"
 
-# chroma_client = chromadb.Client(
-#     ChromaSettings(
-#         chroma_db_impl="duckdb+parquet",
-#         persist_directory=PERSIST_DIR
-#     )
-# )
+
 
 # Use PersistentClient instead of Client with ChromaSettings
 chroma_client = chromadb.PersistentClient(path=PERSIST_DIR)

@@ -27,3 +27,24 @@ do run `` rasa train `` if any changes are made to the code.
 
 install rasa and `` rasa init `` it to have the bareback directories before you begin your project.
 
+## Order of running
+
+the order:
+i. mcq service
+python3 -m uvicorn mcq_service.app:app --port 8001
+
+ii. short answer service
+python3 -m uvicorn short_app:app --port 8002
+
+iii. start the http server for ui
+python3 -m http.server 8000
+
+iv. start rasa  server
+rasa run --enable-api --cors "*"
+
+v. start the rasa action server
+rasa run actions --port 5055
+
+You also require different virtual environments for the short and mcq engine, and rasa as they have different dependency issues.
+
+

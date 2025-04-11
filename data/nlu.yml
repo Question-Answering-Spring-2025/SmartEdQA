@@ -3,9 +3,11 @@ version: "3.1"
 nlu:
 - intent: ask_mcq
   examples: |
-    - can i ask a question
-    - i have a question to ask
-    - I want to answer a question
+    - can i ask an MCQ question
+    - Can you help with an MCQ?
+    - I have a multiple-choice question
+    - Let’s do an MCQ
+    - I’d like to ask an MCQ
     - I want to ask a mcq
     - i wanna ask a multiple choice question
     
@@ -16,26 +18,28 @@ nlu:
     - {"question": "What is...", "options": "A... B..."}
     - {"question" : "Another question?", "options": "A... B..." }
     - {"question":"Question here","options":"A... B..."}
+    - What’s a common trait of flowers designed for insect pollination? A. Brightly colored petals B. Large amounts of pollen C. Small, inconspicuous flowers D. Light, non-sticky pollen
+    - Which of these is true about photosynthesis? A. It needs sunlight B. It happens at night C. It doesn’t need water D. It produces carbon dioxide
 
 - intent: affirm_another_question
   examples: |
-    - yes, i have another question
-    - yes, i ahve another question
-    - yeah, another one
-    - yes i do
-    - sure, i want another question
-    - yup, another question
-    - yea, i have another one
+    - yes, i have another MCQ question
+    - yes, i have another MCQ question
+    - yeah, another mcq one
+    - yes i do, an mcq
+    - sure, i want another mcq question
+    - yup, another mcq question
+    - yea, i have another mcq one
+
 - intent: affirm_another_shortqa_question 
   examples: |
     - yes, i have another short answer question
     - yes, i have another short qa question
     - yeah, another short answer
     - yes i do, a short answer
-    - yeah
-    - yup
     - sure, i have another short answer question
     - yup, another short answer question
+
 - intent: ask_short_qa
   examples: |
     - i want to answer a short question
@@ -54,12 +58,12 @@ nlu:
 - intent: mention_long_question
   examples: |
     - I have a long question
-    - I ahve long question
+    - I have long question
     - I have a very long question
     - I’ve got a long question for you
     - My question is long
     - I have a long question to ask
-    
+   
 - intent: greet
   examples: |
     - hey

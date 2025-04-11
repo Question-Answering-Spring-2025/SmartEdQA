@@ -1,70 +1,55 @@
 version: "3.1"
 
 rules:
-- rule: MCQ question flow
-  # condition:
-  #   - slot_was_set:
-  #       - mcq_question: null  # Ensure the slot starts empty
+- rule: Start MCQ question flow
   steps:
     - intent: ask_mcq
-    - action: utter_ask_mcq_question  # Skip asking for the question if it’s already provided
-    - action: action_listen
-    - action: action_run_mcq  # Run the custom action for the MCQ
-    - action: utter_ask_another_mcq_question
+    - action: utter_ask_mcq_question
     - slot_was_set:
-        - mcq_question: null  # Clear the slot after processing
+        - question_type: "mcq"
 
-- rule: MCQ question provided directly
-  # condition:
-  #   - slot_was_set:
-  #       - mcq_question:  # Trigger this if the slot is filled (question provided)
+- rule: Process provided MCQ
   steps:
-    # - intent: ask_mcq
     - intent: provide_mcq
-    - action: action_run_mcq  # Process the question immediately
+    - action: action_run_mcq
     - action: utter_ask_another_mcq_question
     - slot_was_set:
         - mcq_question: null
 
 - rule: Affirm another MCQ question
+  condition:
+    - slot_was_set:
+        - question_type: "mcq"
   steps:
-  - intent: affirm_another_question
-  - action: utter_ask_mcq_question
-  - action: action_listen
-  # - action: ask_mcq
-  - action: action_run_mcq
-  - action: utter_ask_another_mcq_question
-  - slot_was_set:
-      - mcq_question: null  # Clear the slot after processing
+    - intent: affirm_another_question
+    - action: utter_ask_mcq_question
+    - slot_was_set:
+        - question_type: "mcq"
 
-- rule: Affirm Another ShortQA question 
+- rule: Affirm another short-answer question
+  condition:
+    - slot_was_set:
+        - question_type: "short_qa"
   steps:
     - intent: affirm_another_shortqa_question
     - action: utter_ask_short_qa_question
-    - action: action_listen
-    - action: action_run_short_qa
-    - action: utter_ask_another_shortqa_question
     - slot_was_set:
-        - short_qa_question: null
+        - question_type: "short_qa"
 
-- rule: Short-answer question flow
+- rule: Start short-answer question flow
   steps:
     - intent: ask_short_qa
     - action: utter_ask_short_qa_question
-    - action: action_listen
-    - action: action_run_short_qa
-    - action: utter_ask_another_shortqa_question
     - slot_was_set:
-        - short_qa_question: null
+        - question_type: "short_qa"
 
-- rule: Short-answer question provided directly
+- rule: Process provided short-answer question
   steps:
     - intent: provide_short_qa
     - action: action_run_short_qa
     - action: utter_ask_another_shortqa_question
     - slot_was_set:
         - short_qa_question: null
-
 - rule: Respond to long question mention
   steps:
     - intent: mention_long_question
@@ -78,6 +63,7 @@ rules:
     - slot_was_set: # clear slots
         - mcq_question: null
         - short_qa_question: null
+        - question_type: null
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
@@ -86,3 +72,4 @@ rules:
     - slot_was_set:
         - mcq_question: null
         - short_qa_question: null
+        - question_type: null
