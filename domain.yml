@@ -17,7 +17,7 @@ intents:
 slots:
   mcq_question:
     type: text
-    influence_conversation: true  # Allow the slot to influence the conversation
+    influence_conversation: true  # allow the slot to influence the conversation
     mappings:
       - type: from_text
   short_qa_question: 

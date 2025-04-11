@@ -11,4 +11,6 @@ package-lock.json
 short_qa/venv_shortqa
 short_qa/__pycache__/
 chroma_db
-
+chroma_db_mcq/9db963cc-b412-472b-978b-5bbdc906e99e
+chroma_db_mcq/chroma.sqlite3
+chroma_db_mcq
