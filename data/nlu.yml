@@ -10,6 +10,7 @@ nlu:
     - I’d like to ask an MCQ
     - I want to ask a mcq
     - i wanna ask a multiple choice question
+    - still on mcq
     
 - intent: provide_mcq
   examples: |

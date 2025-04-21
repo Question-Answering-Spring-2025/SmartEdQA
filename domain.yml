@@ -88,8 +88,8 @@ responses:
   utter_iamabot:
   - text: "I am a bot, built by delphine nyaboke, and powered by Rasa."
   - text: "I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your questions."
-  - text: "Of course not, I am a bot! I was built by delphine nyaboke, to assist with question answering."
-  - text: "Yes, I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your questions."
+  - text: "I am a bot! I was built by delphine nyaboke, to assist with question answering."
+  - text: "I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your mcq and short answer questions."
   - text: "I am a bot, built by delphine nyaboke, and powered by Rasa. I am here to assist you with your questions."
 
 actions:
