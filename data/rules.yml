@@ -15,6 +15,7 @@ rules:
     - action: utter_ask_another_mcq_question
     - slot_was_set:
         - mcq_question: null
+        - question_type: "mcq"
 
 - rule: Affirm another MCQ question
   condition:
@@ -50,6 +51,8 @@ rules:
     - action: utter_ask_another_shortqa_question
     - slot_was_set:
         - short_qa_question: null
+        - question_type: "short_qa"
+        
 - rule: Respond to long question mention
   steps:
     - intent: mention_long_question
